@@ -155,9 +155,9 @@ public class Main {
         if (!esPrimerUsuario) {
             System.out.println("Tipo de empleado: ");
             System.out.println(TipoEmpleado.retornarValoresDeEnum());
-            nroTipoEmpleado = Integer.parseInt(teclado.nextLine());
+            nroTipoEmpleado = Integer.parseInt(teclado.nextLine()) - 1;
             if (nroTipoEmpleado < TipoEmpleado.values().length) {
-                hotel.crearEmpleado(nombre,apellido,dni,usuario,email,clave,TipoEmpleado.values()[nroTipoEmpleado-1]);
+                hotel.crearEmpleado(nombre,apellido,dni,usuario,email,clave,TipoEmpleado.values()[nroTipoEmpleado]);
             } else {
                 System.out.println("El numero no es valido, intente nuevamente");
             }
