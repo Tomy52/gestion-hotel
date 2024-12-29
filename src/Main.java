@@ -187,12 +187,13 @@ public class Main {
         do {
             System.out.println("\n--- Menu del administrador ---");
             System.out.println("1. Crear habitacion(es)");
-            System.out.println("2. Gestionar una habitacion por su ID");
-            System.out.println("3. Crear un empleado");
-            System.out.println("4. Ver lista de empleados");
-            System.out.println("5. Gestionar un empleado");
-            System.out.println("6. Eliminar un empleado");
-            System.out.println("7. Persistir estado actual del sistema");
+            System.out.println("2. Listar todas las habitaciones");
+            System.out.println("3. Gestionar una habitacion por su ID");
+            System.out.println("4. Crear un empleado");
+            System.out.println("5. Ver lista de empleados");
+            System.out.println("6. Gestionar un empleado");
+            System.out.println("7. Eliminar un empleado");
+            System.out.println("8. Persistir estado actual del sistema");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -210,25 +211,28 @@ public class Main {
                     crearHabitaciones(hotel);
                     break;
                 case 2:
+                    System.out.println(hotel.listarHabitaciones());
+                    break;
+                case 3:
                     try {
                         gestionarHabitacion(hotel);
                     } catch (HabitacionNoEncontradaException e) {
                         System.out.println("La habitacion no pudo ser encontrada o no existe");
                     }
                     break;
-                case 3:
+                case 4:
                     crearEmpleado(hotel,false);
                     break;
-                case 4:
+                case 5:
                     System.out.println(hotel.verEmpleados());
                     break;
-                case 5:
+                case 6:
                     gestionarPersona(hotel);
                     break;
-                case 6:
+                case 7:
                     eliminarEmpleado(hotel);
                     break;
-                case 7:
+                case 8:
                     hotel.hacerBackup();
                     break;
                 case 0:
