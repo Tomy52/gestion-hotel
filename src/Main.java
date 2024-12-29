@@ -193,7 +193,6 @@ public class Main {
             System.out.println("5. Ver lista de empleados");
             System.out.println("6. Gestionar un empleado");
             System.out.println("7. Eliminar un empleado");
-            System.out.println("8. Persistir estado actual del sistema");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -231,9 +230,6 @@ public class Main {
                     break;
                 case 7:
                     eliminarEmpleado(hotel);
-                    break;
-                case 8:
-                    hotel.hacerBackup();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
