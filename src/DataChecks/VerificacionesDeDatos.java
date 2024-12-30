@@ -22,7 +22,7 @@ public final class VerificacionesDeDatos {
      * @return Un booleano Siempre es true si es correcto, por si se necesita poner esto en un if.
      * @throws BadDataException Si el dni no tiene 8 caracteres, se lanza un mensaje segun el problema.
      */
-    static public boolean verificarDni(int dni) throws BadDataException {
+    public static boolean verificarDni(int dni) throws BadDataException {
         boolean result = true;
         String err = "";
 
@@ -49,7 +49,7 @@ public final class VerificacionesDeDatos {
      * @return Un booleano Siempre es true si es correcto, por si se necesita poner esto en un if.
      * @throws BadDataException Si el dni no tiene 8 caracteres, se lanza un mensaje segun el problema.
      */
-    static public boolean verificarDni(Integer dni) throws BadDataException {
+    public static boolean verificarDni(Integer dni) throws BadDataException {
         boolean result = true;
         String err = "";
 
@@ -75,7 +75,7 @@ public final class VerificacionesDeDatos {
      * @return Un booleano que siempre retorna true por si enecesita poner esto en un if.
      * @throws BadDataException Si la palabra tiene un numero, se lanza esto.
      */
-    static public boolean tieneNumeros(String palabra) throws BadDataException {
+    public static boolean tieneNumeros(String palabra) throws BadDataException {
         if (palabra.matches(".*\\d.*")) {
             throw new BadDataException("El texto introducido no debe tener numeros");
         }
@@ -88,7 +88,7 @@ public final class VerificacionesDeDatos {
      * @return Un booleano que siempre retorna true por si necesita poner esto en un if.
      * @throws BadDataException Si la palabra contiene cualquier otra cosa que no sea un numero.
      */
-    static public boolean esSoloNumeros(String numeros) throws BadDataException {
+    public static boolean esSoloNumeros(String numeros) throws BadDataException {
         if (!numeros.matches("[0-9]+")) {
             throw new BadDataException("El texto contiene letras o está vacío");
         }

@@ -108,7 +108,7 @@ public class Main {
      * @throws BadDataException puede lanzar esta excepcion si se ingresan datos incorrectos.
      * @throws NullNameException puede lanzar esta excepcion si hay problemas con los archivos.
      */
-    static public void menuLogin(Hotel hotel) throws PersonaNoExisteException, BadDataException, NullNameException {
+    public static void menuLogin(Hotel hotel) throws PersonaNoExisteException, BadDataException, NullNameException {
         Scanner teclado = new Scanner(System.in);
         String username;
         String clave;
@@ -135,7 +135,7 @@ public class Main {
      * @throws BadDataException
      */
 
-    static public void crearEmpleado(Hotel hotel, boolean esPrimerUsuario) throws BadDataException {
+    public static void crearEmpleado(Hotel hotel, boolean esPrimerUsuario) throws BadDataException {
         Scanner teclado = new Scanner(System.in);
         String nombre;
         String apellido;
@@ -181,7 +181,7 @@ public class Main {
      *
      *
      */
-    static public void menuGestionAdmin(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException, BadOptionException, BadDataException {
+    public static void menuGestionAdmin(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException, BadOptionException, BadDataException {
         Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.ADMINISTRADOR) {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
@@ -253,7 +253,7 @@ public class Main {
      * @throws UsuarioNoAutorizadoException puede lanzar esta excepcion si el usuario no esta registrado
      */
 
-    static public void menuGestionRecepcionista(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException {
+    public static void menuGestionRecepcionista(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException {
         Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.RECEPCIONISTA) {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
@@ -330,7 +330,7 @@ public class Main {
      * @throws PersonaExisteException Lanza esta excepcion cuando el pasajero a existe.
      */
 
-    static public void agregarPasajero(Hotel hotel,int dni) throws BadDataException, PersonaExisteException {
+    public static void agregarPasajero(Hotel hotel,int dni) throws BadDataException, PersonaExisteException {
         Scanner teclado = new Scanner(System.in);
 
         if(hotel.existeEmpleadoConEseDNI(dni))
@@ -356,8 +356,7 @@ public class Main {
      * @param mensaje nombre y apellido
      * @return devuelve un <code>String</code> que es el nombre y el apellido
      */
-    static public String definirNombreoApe(String mensaje)
-    {
+    public static String definirNombreoApe(String mensaje) {
         Scanner teclado = new Scanner(System.in);
         String dato = "";
         boolean nombreVerificado = false;
@@ -382,7 +381,7 @@ public class Main {
      * @return el dni del usuario
      */
 
-    static public int definirDni(Hotel hotel) {
+    public static int definirDni(Hotel hotel) {
         Scanner teclado = new Scanner(System.in);
         int dni = 0;
         boolean dniVerificado = false;
@@ -892,7 +891,7 @@ public class Main {
      * @return devuelve un <code>int</code> que es el numero de habitacion agregadoa la reserva.
      * @throws HabitacionNoEncontradaException Lanza esta excepcion cuando no ecuentra la habitacion en el sistema!
      */
-    static public int selectorDeHabitacionDisponible(Hotel hotel, Reserva intentoreserva) throws HabitacionNoEncontradaException {
+    public static int selectorDeHabitacionDisponible(Hotel hotel, Reserva intentoreserva) throws HabitacionNoEncontradaException {
         Scanner teclado = new Scanner(System.in);
         ArrayList<Integer> numerosDeHabitacion;
         try {
