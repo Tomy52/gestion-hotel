@@ -13,8 +13,6 @@ import static DataChecks.VerificacionesDeDatos.esSoloNumeros;
  */
 
 public class GestionPersona {
-    static Scanner teclado = new Scanner(System.in);
-
     /**
      * Metodo estatico que muestra el menu de personas, muestra opciones dependiendo si la persona es empleado o pasajero.
      * @param persona la persona de la cual se mostraran las opciones
@@ -22,7 +20,7 @@ public class GestionPersona {
      *
      */
     public static <T extends Persona> void mostrarMenu(T persona, Hotel hotel) {
-
+        Scanner teclado = new Scanner(System.in);
         int opcion = 0;
 
         do {
@@ -145,6 +143,7 @@ public class GestionPersona {
      */
 
     public static void cambiarDomicilio(Persona persona) {
+        Scanner teclado = new Scanner(System.in);
         Pasajero pasajero = (Pasajero) persona;
         System.out.println("Domicilio actual: " + pasajero.getDomicilio() + "\n");
         System.out.println("Nuevo domicilio: ");
@@ -157,6 +156,7 @@ public class GestionPersona {
      */
 
     public static void cambiarUsuario(Persona persona, Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         try {
             Empleado empleado = (Empleado) persona;
             System.out.println("Usuario actual: " + empleado.getUsuario() + "\n");
@@ -176,6 +176,7 @@ public class GestionPersona {
      * @param persona La persona a la cual se le va a cambiar el email.
      */
     public static void cambiarEmail(Persona persona) {
+        Scanner teclado = new Scanner(System.in);
         try {
             if (!(persona instanceof Empleado)) {
                 throw new BadOptionException("Opcion no aplicable a pasajeros");
@@ -195,6 +196,7 @@ public class GestionPersona {
      */
 
     public static void cambiarClave(Persona persona) {
+        Scanner teclado = new Scanner(System.in);
         try {
             if (!(persona instanceof Empleado)) {
                 throw new BadOptionException("Opcion no aplicable a pasajeros");

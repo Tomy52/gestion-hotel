@@ -22,9 +22,9 @@ import static DataChecks.VerificacionesDeDatos.esSoloNumeros;
  * @author JavierSchettini
  */
 public class Main {
-    public static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
         Hotel hotel = new Hotel("Hotel California");
         boolean continuar = true;
 
@@ -32,6 +32,7 @@ public class Main {
             try {
                 menuInicio(hotel);
                 continuar = false;
+                teclado.close();
 
             } catch (BadOptionException | BadDataException | UsuarioNoAutorizadoException | NullNameException ex){
                 System.out.println(ex.getMessage());
@@ -49,6 +50,7 @@ public class Main {
      */
 
     public static void menuInicio(Hotel hotel) throws BadOptionException, NullNameException, UsuarioNoAutorizadoException, BadDataException {
+        Scanner teclado = new Scanner(System.in);
         int opcion = 0;
 
         do {
@@ -107,6 +109,7 @@ public class Main {
      * @throws NullNameException puede lanzar esta excepcion si hay problemas con los archivos.
      */
     static public void menuLogin(Hotel hotel) throws PersonaNoExisteException, BadDataException, NullNameException {
+        Scanner teclado = new Scanner(System.in);
         String username;
         String clave;
 
@@ -133,6 +136,7 @@ public class Main {
      */
 
     static public void crearEmpleado(Hotel hotel, boolean esPrimerUsuario) throws BadDataException {
+        Scanner teclado = new Scanner(System.in);
         String nombre;
         String apellido;
         int dni;
@@ -178,6 +182,7 @@ public class Main {
      *
      */
     static public void menuGestionAdmin(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException, BadOptionException, BadDataException {
+        Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.ADMINISTRADOR) {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
         }
@@ -249,6 +254,7 @@ public class Main {
      */
 
     static public void menuGestionRecepcionista(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException {
+        Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.RECEPCIONISTA) {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
         }
@@ -325,6 +331,7 @@ public class Main {
      */
 
     static public void agregarPasajero(Hotel hotel,int dni) throws BadDataException, PersonaExisteException {
+        Scanner teclado = new Scanner(System.in);
 
         if(hotel.existeEmpleadoConEseDNI(dni))
         {
@@ -351,6 +358,7 @@ public class Main {
      */
     static public String definirNombreoApe(String mensaje)
     {
+        Scanner teclado = new Scanner(System.in);
         String dato = "";
         boolean nombreVerificado = false;
         while (!nombreVerificado) {
@@ -375,6 +383,7 @@ public class Main {
      */
 
     static public int definirDni(Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         int dni = 0;
         boolean dniVerificado = false;
 
@@ -400,6 +409,7 @@ public class Main {
      */
 
     public static void crearHabitaciones(Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         int cantHab = 0;
         int capMaxHab = 0;
         int tipoHab = 0;
@@ -438,6 +448,7 @@ public class Main {
      */
 
     public static void listarHabitacionesEstado(Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         int tipoHab;
         int estadoSeleccionado;
 
@@ -462,6 +473,7 @@ public class Main {
      */
 
     public static void contarHabitacionesEstado(Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         int estadoSeleccionado;
         int totalHabitaciones;
 
@@ -487,6 +499,7 @@ public class Main {
      */
 
     public static void gestionarHabitacion(Hotel hotel) throws HabitacionNoEncontradaException, NullNameException {
+        Scanner teclado = new Scanner(System.in);
         Habitacion habitacion = null;
 
         System.out.println("Ingrese el numero de la habitacion a gestionar: ");
@@ -511,6 +524,7 @@ public class Main {
      */
 
     public static void gestionarPersona(Hotel hotel) {
+        Scanner teclado = new Scanner(System.in);
         try {
             System.out.println("Ingrese el numero de dni de la persona a gestionar: ");
             int dniPersona = Integer.parseInt(teclado.nextLine());
@@ -531,6 +545,7 @@ public class Main {
      * @throws BadDataException Lanza esta excepcion si el usuario ya existe
      */
     public static String definirUsuario(Hotel hotel) throws BadDataException {
+        Scanner teclado = new Scanner(System.in);
         String username;
         boolean usuarioNoExiste = true;
 
@@ -550,6 +565,7 @@ public class Main {
      */
 
     public static void eliminarEmpleado(Hotel hotel)  {
+        Scanner teclado = new Scanner(System.in);
         int dniEmpleado = 0;
         boolean dniVerificado = false;
 
@@ -596,6 +612,7 @@ public class Main {
      * @param hotel objeto de tipo <code>Hotel</code>
      */
     public static void menuReservas(Hotel hotel){
+        Scanner teclado = new Scanner(System.in);
         int opcion = -1;
         do {
 
@@ -756,6 +773,7 @@ public class Main {
      */
 
     public static void agregarReserva(Hotel hotel) throws HabitacionNoEncontradaException, BadDataException, ReservaExisteException, PersonaExisteException {
+        Scanner teclado = new Scanner(System.in);
         int dniTitular = 0;
         LocalDate fechaInicio = null;
         LocalDate fechaFinal = null;
@@ -814,6 +832,7 @@ public class Main {
      * se expulsara inmediato.
      */
     public static int agregarPersonaAReservaCreando(Hotel hotel, String tipo) throws PersonaExisteException {
+        Scanner teclado = new Scanner(System.in);
         boolean personaexiste = false;
         int dniPersona = 0;
         while (!personaexiste) {
@@ -842,6 +861,7 @@ public class Main {
      * @return Retorna objeto LocalDate que es la fecha de la reserva
      */
     public static LocalDate asignarFechaAEvento(String tipo) {
+        Scanner teclado = new Scanner(System.in);
         LocalDate fecha = null;
         boolean fechavalida = false;
         while (!fechavalida) {
@@ -873,6 +893,7 @@ public class Main {
      * @throws HabitacionNoEncontradaException Lanza esta excepcion cuando no ecuentra la habitacion en el sistema!
      */
     static public int selectorDeHabitacionDisponible(Hotel hotel, Reserva intentoreserva) throws HabitacionNoEncontradaException {
+        Scanner teclado = new Scanner(System.in);
         ArrayList<Integer> numerosDeHabitacion;
         try {
             numerosDeHabitacion = hotel.verHabitacionesDisponibles(intentoreserva);

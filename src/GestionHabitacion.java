@@ -53,7 +53,7 @@ public class GestionHabitacion {
                     break;
                 case 2:
                     try {
-                        cambiarEstado(scanner, habitacion);
+                        cambiarEstado(habitacion);
                     } catch (BadDataException e) {
                         System.out.println(e.getMessage());
                     }
@@ -114,18 +114,18 @@ public class GestionHabitacion {
     /**
      * Metodo generico que permite cambiar el estado de una habitacion.
      *
-     * @param scanner lee los datos ingresados por teclado
      * @param habitacion la habitacion a cambiarle el estado
      */
 
-    private static <T extends Habitacion> void cambiarEstado(Scanner scanner, T habitacion) throws BadDataException {
+    private static <T extends Habitacion> void cambiarEstado(T habitacion) throws BadDataException {
+        Scanner teclado = new Scanner(System.in);
         String err = "";
         System.out.println("Estados disponibles:");
         System.out.println(EstadoHabitacion.retornarValoresDeEnum());
         System.out.print("Seleccione el nuevo estado: ");
 
         int estadoSeleccionado = 0;
-        String numeroIngresado = scanner.nextLine();
+        String numeroIngresado = teclado.nextLine();
         esSoloNumeros(numeroIngresado);
         estadoSeleccionado = Integer.parseInt(numeroIngresado);
 
