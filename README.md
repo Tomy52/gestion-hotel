@@ -1,20 +1,10 @@
+# Sistema de gestión hotelera
+Continuación del [trabajo](https://github.com/schjavier/TP-ProgramacionII) realizado por [@schjavier](https://github.com/schjavier), [@juliganga](https://github.com/juliganga) y [@Tomy52](https://github.com/Tomy52)
+
+La idea de este proyecto es arreglar diversos problemas e incorporar distintas funcionalidades que no pudieron llegar a incorporarse en el original. Es un repositorio experimental, en donde voy a sumar distintas cosas que considere interesantes para el programa.
 
 
- ![Banner del trabajo](https://raw.githubusercontent.com/schjavier/TP-ProgramacionII/b565cbd4cdd20dcb7db48ff3e53e92de7a336480/banner_tp.png)
-
-# Trabajo Práctico Final - Programación II (TUP)
-Trabajo final integrador de la materia Programación 2 de la Tecnicatura Universitaria en Programación de la UTN FRMDP.
-
-El tema del proyecto es: _sistema de gestión hotelera_
-
-## Integrantes del grupo
-
-- [@schjavier](https://github.com/schjavier)
-- [@juliganga](https://github.com/juliganga)
-- [@Tomy52](https://github.com/Tomy52)
-
-
-## Funcionalidades:
+## Funcionalidades (actuales):
 
 - Menú de inicio de sesión con 2 niveles de usuario
     - Administrador
@@ -46,8 +36,8 @@ El tema del proyecto es: _sistema de gestión hotelera_
     - Suite
     - Presidencial
 - Sistema de reservas con chequeo de fechas
-## Diagrama UML
 
-También se encuentra disponible el archivo .drawio en la raíz del proyecto
+## Tareas planificadas:
 
- ![Diagrama UML del proyecto](https://raw.githubusercontent.com/schjavier/TP-ProgramacionII/refs/heads/main/uml_tp.png)
+- Implementar una interfáz gráfica para simplificar el uso del programa
+- Mudar la persistencia a una base de datos
