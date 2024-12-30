@@ -93,7 +93,7 @@ public class GestionHabitacion {
      * Metodo que muestra unas serie de opciones comunes a todos los tipos de habitacion
      */
 
-    public static void mostrarOpcionesComunes() {
+    private static void mostrarOpcionesComunes() {
         System.out.println("1. Ver estado de la habitación");
         System.out.println("2. Cambiar estado de la habitación");
         System.out.println("3. Ver info de ocupantes de la habitación");

@@ -122,7 +122,7 @@ public class Hotel {
      * @return La lista que en la que se trabajara
      * @throws BadOptionException En el caso de que el id de tipo habitacion (lista) no este dentro del switch
      */
-    public Habitaciones selectorDeTipoHabitacion(int tipoHabitacion) throws BadOptionException {
+    private Habitaciones selectorDeTipoHabitacion(int tipoHabitacion) throws BadOptionException {
         return switch (tipoHabitacion) {
             case 1 -> habitacionesStandard;
             case 2 -> habitacionesSuite;
@@ -221,7 +221,7 @@ public class Hotel {
      * @throws PersonaNoExisteException Puede lanzar esta excepcion si el pasajero que busca, no existe.
      * @throws BadDataException Puede lanzar esta excepcion si el DNI no pude ser verificado.
      */
-    public Pasajero buscarPasajeroConEseDNI(int dni) throws PersonaNoExisteException, BadDataException // para mostrarDatos de una o mas personas (puede ser de las reservas no?)
+    private Pasajero buscarPasajeroConEseDNI(int dni) throws PersonaNoExisteException, BadDataException // para mostrarDatos de una o mas personas (puede ser de las reservas no?)
     {
         VerificacionesDeDatos.verificarDni(dni);
         Pasajero persona = null;
@@ -366,7 +366,7 @@ public class Hotel {
      *
      */
 
-    public void cargarJSONPasajeros(){
+    private void cargarJSONPasajeros(){
         try {
             JSONArray pasajerosJson = new JSONArray(CreadorAJSON.downloadJSON(pasajeroService.getNombreArchivo()));
 
@@ -400,7 +400,7 @@ public class Hotel {
      * Metodo que trasforma la lista de pasajero en un <code>JSONArray</code>.
      * @return devuelve un <code>String</code> que es el JSONArray pasado a string.
      */
-    public String pasarListaDePasajerosAJSON() {
+    private String pasarListaDePasajerosAJSON() {
         JSONArray arregloPasajeros = new JSONArray();
         for (Pasajero pasajero : pasajeros) {
             arregloPasajeros.put(pasajero.toJSON());
@@ -429,7 +429,7 @@ public class Hotel {
      *
      */
 
-    public void cargarJSONEmpleados(){
+    private void cargarJSONEmpleados(){
         try {
             JSONArray empleadosJson = new JSONArray(CreadorAJSON.downloadJSON(empleadoService.getNombreArchivo()));
             for (int i = 0; i < empleadosJson.length(); i++) {
@@ -467,7 +467,7 @@ public class Hotel {
      * @return devuelve un <code>JSONArray</code> convertido en String.
      */
 
-    public String pasarListaDeEmpleadosAJSON() {
+    private String pasarListaDeEmpleadosAJSON() {
         JSONArray arregloEmpleados = new JSONArray();
         for (Empleado empleado : empleados) {
             arregloEmpleados.put(empleado.toJSON());
@@ -481,7 +481,7 @@ public class Hotel {
      * @return devuelve un <code>String</code> que representa todos los tipos de habitaciones en formato Json.
      */
 
-    public String todasLasHabitacionesAJSON() {
+    private String todasLasHabitacionesAJSON() {
         JSONObject habitaciones = new JSONObject();
 
         habitaciones.put("habitacionesStandard", habitacionesStandard.habitacionesAJson());
@@ -495,7 +495,7 @@ public class Hotel {
      * Metodo que carga la todas las Habitaciones desde el archivo JSON.
      */
 
-    public void cargarJSONHabitaciones(){
+    private void cargarJSONHabitaciones(){
         try {
             JSONObject habitacionesJson = new JSONObject(CreadorAJSON.downloadJSON(habitacionesService.getNombreArchivo()));
 
@@ -642,7 +642,7 @@ public class Hotel {
      * @param dni El dni del titular de la reserva
      * @return true, si se encontro al menos una reserva con el dni asociado, false en otro caso.
      */
-    public boolean buscarReservaPorTitular(int dni) {
+    private boolean buscarReservaPorTitular(int dni) {
         boolean respuesta = false;
 
         for (Reserva reserva : reservas) {
@@ -714,7 +714,7 @@ public class Hotel {
      *
      * @return devuelve la lsta de reservas convertida en Json como string.
      */
-    public String listaReservasToJson() {
+    private String listaReservasToJson() {
         JSONArray reservasJson = new JSONArray();
         for (Reserva reserva : reservas) {
             reservasJson.put(reserva.toJson());
@@ -836,7 +836,7 @@ public class Hotel {
      *
      */
 
-    public void cargarJSONReservas() {
+    private void cargarJSONReservas() {
         try {
             JSONArray jsonReservas = new JSONArray(CreadorAJSON.downloadJSON(reservaService.getNombreArchivo()));
             for (int i = 0; i < jsonReservas.length(); i++) {
@@ -937,7 +937,7 @@ public class Hotel {
      * @return <code>true</code> si esta disponible, <code>false</code> si no lo esta.
      */
 
-    public boolean verSiHabitacionEstaDisponible(Reserva intento, int numhabitacion) {
+    private boolean verSiHabitacionEstaDisponible(Reserva intento, int numhabitacion) {
         boolean disponible = true;
         for (Reserva reserva : reservas) {
             if (numhabitacion == reserva.getHabitacion() && reserva.isActiva()) {
