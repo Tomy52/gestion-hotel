@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TP-ProgramacionII.iml" filepath="$PROJECT_DIR$/TP-ProgramacionII.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gestion-hotel.iml" filepath="$PROJECT_DIR$/gestion-hotel.iml" />
     </modules>
   </component>
 </project>
