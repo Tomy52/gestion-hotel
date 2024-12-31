@@ -56,8 +56,7 @@ public class Main {
         do {
 
             System.out.println("\n--- Menu principal ---");
-            System.out.println("1. Iniciar sesion / ir al menú");
-            System.out.println("2. Cerrar sesion");
+            System.out.println("1. Iniciar sesion");
             System.out.println("0. Salir");
 
             System.out.println("Ingrese una opcion: ");
@@ -85,12 +84,12 @@ public class Main {
                         } else if (hotel.obtenerEmpleadoLogueado().getTipo() == TipoEmpleado.RECEPCIONISTA) {
                             menuGestionRecepcionista(hotel);
                         }
+
+                        hotel.logOut();
+                        System.out.println("Sesion cerrada");
                     } catch (PersonaNoExisteException e) {
                         System.out.println("Los datos ingresados son incorrectos o el empleado no existe!");
                     }
-                    break;
-                case 2:
-                    hotel.logOut();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
@@ -198,8 +197,8 @@ public class Main {
             System.out.println("5. Ver lista de empleados");
             System.out.println("6. Gestionar un empleado");
             System.out.println("7. Eliminar un empleado");
-            System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("0. Cerrar sesion");
+            System.out.print("Seleccione una opcion: ");
 
             try {
                 String numeroIngresado = teclado.nextLine();
@@ -237,7 +236,6 @@ public class Main {
                     eliminarEmpleado(hotel);
                     break;
                 case 0:
-                    System.out.println("Saliendo...");
                     break;
                 default:
                     System.out.println("Ingrese una opcion valida!");
@@ -271,7 +269,7 @@ public class Main {
             System.out.println("6. Revisar cocinas de las habitaciones");
             System.out.println("7. Revisar jacuzzis de las habitaciones");
             System.out.println("8. Gestionar reservas");
-            System.out.println("0. Salir");
+            System.out.println("0. Cerrar sesion");
             System.out.print("Seleccione una opcion: ");
 
             try {
@@ -313,7 +311,6 @@ public class Main {
                     menuReservas(hotel);
                     break;
                 case 0:
-                    System.out.println("Saliendo...");
                     break;
                 default:
                     System.out.println("Ingrese una opcion valida!");
