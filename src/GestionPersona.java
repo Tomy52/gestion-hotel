@@ -21,7 +21,7 @@ public class GestionPersona {
      */
     public static <T extends Persona> void mostrarMenu(T persona, Hotel hotel) {
         Scanner teclado = new Scanner(System.in);
-        int opcion = 0;
+        int opcion;
 
         do {
             mostrarOpcionesComunes();
@@ -39,8 +39,8 @@ public class GestionPersona {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println("Solo se aceptan números!");
-                opcion = 0;
+                opcion = -1;
+                System.out.println(e.getMessage());
             }
 
             switch (opcion) {

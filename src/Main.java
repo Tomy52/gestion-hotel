@@ -51,7 +51,7 @@ public class Main {
 
     private static void menuInicio(Hotel hotel) throws BadOptionException, NullNameException, UsuarioNoAutorizadoException, BadDataException {
         Scanner teclado = new Scanner(System.in);
-        int opcion = 0;
+        int opcion;
 
         do {
 
@@ -67,8 +67,8 @@ public class Main {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println("Solo se aceptan números!");
-                opcion = 0;
+                opcion = -1;
+                System.out.println(e.getMessage());
             }
 
             switch (opcion) {
@@ -187,7 +187,7 @@ public class Main {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
         }
 
-        int opcion = 0;
+        int opcion;
 
         do {
             System.out.println("\n--- Menu del administrador ---");
@@ -206,8 +206,8 @@ public class Main {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println("Solo se aceptan números!");
-                opcion = 0;
+                opcion = -1;
+                System.out.println(e.getMessage());
             }
 
             switch (opcion) {
@@ -259,7 +259,7 @@ public class Main {
             throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
         }
 
-        int opcion = 0;
+        int opcion;
 
         do {
             System.out.println("\n--- Menu del recepcionista ---");
@@ -279,8 +279,8 @@ public class Main {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println("Solo se aceptan números!");
-                opcion = 0;
+                opcion = -1;
+                System.out.println(e.getMessage());
             }
 
             switch (opcion) {
@@ -612,7 +612,7 @@ public class Main {
      */
     private static void menuReservas(Hotel hotel){
         Scanner teclado = new Scanner(System.in);
-        int opcion = -1;
+        int opcion;
         do {
 
             System.out.println("\n--- Gestión reservas ---");
@@ -628,8 +628,8 @@ public class Main {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println(e.getMessage() + ", si creaste una reserva no pasa nada :)");
-                opcion = 0; //para prevenir comportamientos inesperados
+                System.out.println(e.getMessage());
+                opcion = -1; //para prevenir comportamientos inesperados
             }
 
             switch (opcion) {
@@ -642,7 +642,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Ingrese el Id de la reserva que quiere eliminar: ");
-                    int reservaborrar = -1;
+                    int reservaborrar;
                     try {
                         String numeroIngresado = teclado.nextLine();
                         esSoloNumeros(numeroIngresado);
@@ -650,22 +650,21 @@ public class Main {
                         hotel.eliminarReserva(reservaborrar);
                         hotel.actualizarHabitacionesEnModificacionEnReserva();
                     } catch (BadDataException e) {
-                        reservaborrar = -1;
                         System.out.println(e.getMessage());
                     }
-
                     break;
                 case 3:
-                    int id_reserva = -1;
+                    int id_reserva;
                     System.out.println("Ingrese el Id de la reserva que quiere modificar");
                     try {
                         String numeroIngresado = teclado.nextLine();
                         esSoloNumeros(numeroIngresado);
                         id_reserva = Integer.parseInt(numeroIngresado);
                     } catch (BadDataException e) {
+                        id_reserva = -1;
                         System.out.println(e.getMessage());
                     }
-                    int eleccion = -1;
+                    int eleccion;
                     do {
                         try {
                             Reserva reservaEncontrada = hotel.buscarReservaSegunId(id_reserva);
@@ -681,8 +680,8 @@ public class Main {
                                 esSoloNumeros(numeroIngresado);
                                 eleccion = Integer.parseInt(numeroIngresado);
                             } catch (BadDataException e) {
+                                eleccion = -1; //para prevenir comportamientos inesperados
                                 System.out.println(e.getMessage());
-                                eleccion = 0; //para prevenir comportamientos inesperados
                             }
 
                             switch (eleccion) {

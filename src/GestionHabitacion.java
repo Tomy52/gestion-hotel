@@ -23,7 +23,7 @@ public class GestionHabitacion {
     public static <T extends Habitacion> void mostrarMenu(T habitacion, Hotel hotel) throws BadDataException {
 
         Scanner scanner = new Scanner(System.in);
-        int opcion = 0;
+        int opcion;
 
         System.out.println(habitacion);
         do {
@@ -43,8 +43,8 @@ public class GestionHabitacion {
                 esSoloNumeros(numeroIngresado);
                 opcion = Integer.parseInt(numeroIngresado);
             } catch (BadDataException e) {
-                System.out.println("Solo se aceptan números!");
-                opcion = 0;
+                opcion = -1;
+                System.out.println(e.getMessage());
             }
 
             switch (opcion) {
@@ -124,7 +124,7 @@ public class GestionHabitacion {
         System.out.println(EstadoHabitacion.retornarValoresDeEnum());
         System.out.print("Seleccione el nuevo estado: ");
 
-        int estadoSeleccionado = 0;
+        int estadoSeleccionado;
         String numeroIngresado = teclado.nextLine();
         esSoloNumeros(numeroIngresado);
         estadoSeleccionado = Integer.parseInt(numeroIngresado);
