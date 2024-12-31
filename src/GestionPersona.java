@@ -32,7 +32,7 @@ public class GestionPersona {
             }
 
             System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             try {
                 String numeroIngresado = teclado.nextLine();
@@ -73,7 +73,7 @@ public class GestionPersona {
                     cambiarClave(persona);
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Ingrese una opcion valida!");
             }
         } while (opcion != 0);
     }
@@ -88,7 +88,7 @@ public class GestionPersona {
         System.out.println("1. Ver informacion");
         System.out.println("2. Cambiar nombre");
         System.out.println("3. Cambiar apellido");
-        System.out.println("4. Cambiar dni");
+        System.out.println("4. Cambiar DNI");
     }
 
     /**
@@ -129,8 +129,8 @@ public class GestionPersona {
     }
 
     /**
-     * Metodo que cambia el dni de una persona recibida por parametro.
-     * @param persona La persona a la cual se le va a cambiar el dni.
+     * Metodo que cambia el DNI de una persona recibida por parametro.
+     * @param persona La persona a la cual se le va a cambiar el DNI.
      */
     private static void cambiarDni(Persona persona, Hotel hotel) {
         System.out.println("DNI actual: " + persona.getDni());
@@ -165,7 +165,7 @@ public class GestionPersona {
             if (!hotel.existeUsuario(nuevoUsuario)) {
                 empleado.setUsuario(nuevoUsuario);
             } else {
-                throw new PersonaExisteException("Ya existe una persona con ese usuario");
+                throw new PersonaExisteException("Ya existe una persona con ese usuario!");
             }
         } catch (PersonaExisteException e) {
             System.out.println(e.getMessage());
@@ -179,7 +179,7 @@ public class GestionPersona {
         Scanner teclado = new Scanner(System.in);
         try {
             if (!(persona instanceof Empleado)) {
-                throw new BadOptionException("Opcion no aplicable a pasajeros");
+                throw new BadOptionException("Opcion no aplicable a pasajeros!");
             }
 
             Empleado empleado = (Empleado) persona;
@@ -199,7 +199,7 @@ public class GestionPersona {
         Scanner teclado = new Scanner(System.in);
         try {
             if (!(persona instanceof Empleado)) {
-                throw new BadOptionException("Opcion no aplicable a pasajeros");
+                throw new BadOptionException("Opcion no aplicable a pasajeros!");
             }
 
             Empleado empleado = (Empleado) persona;

@@ -36,7 +36,7 @@ public class GestionHabitacion {
                 System.out.println("7. Revisar jacuzzi");
             }
             System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             try {
                 String numeroIngresado = scanner.nextLine();
@@ -84,7 +84,7 @@ public class GestionHabitacion {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Ingrese una opcion valida!");
             }
         } while (opcion != 0);
     }
@@ -94,10 +94,10 @@ public class GestionHabitacion {
      */
 
     private static void mostrarOpcionesComunes() {
-        System.out.println("1. Ver estado de la habitación");
-        System.out.println("2. Cambiar estado de la habitación");
-        System.out.println("3. Ver info de ocupantes de la habitación");
-        System.out.println("4. Ver número de ocupantes actuales");
+        System.out.println("1. Ver estado de la habitacion");
+        System.out.println("2. Cambiar estado de la habitacion");
+        System.out.println("3. Ver info de ocupantes de la habitacion");
+        System.out.println("4. Ver numero de ocupantes actuales");
         System.out.println("5. Ver resumen de la habitacion");
     }
 
@@ -108,7 +108,7 @@ public class GestionHabitacion {
      * @param habitacion habitacion de la cual queremos saber el estado
      */
     private static <T extends Habitacion> void verEstado(T habitacion) {
-        System.out.println("Estado actual de la habitación: " + habitacion.getEstado());
+        System.out.println("Estado actual de la habitacion: " + habitacion.getEstado());
     }
 
     /**
@@ -165,7 +165,7 @@ public class GestionHabitacion {
         if (habitacion.getEstado() == EstadoHabitacion.OCUPADA) {
             System.out.println(hotel.obtenerInfoPasajeros(habitacion.getOcupantes()));
         } else {
-            System.out.println("La habitación no tiene ocupantes");
+            System.out.println("La habitacion no tiene ocupantes!");
         }
     }
 
@@ -194,7 +194,7 @@ public class GestionHabitacion {
      */
     private static void revisarJacuzzi(HabitacionPresidencial habitacion) {
         habitacion.marcarMantenimientoEnJacuzzi();
-        System.out.println("Revision de jacuzzi completo!");
+        System.out.println("Revision de jacuzzi completa!");
     }
 
 

@@ -197,8 +197,8 @@ public class Hotel {
      * Metodo Que verifica si existe un pasajero segun el DNI.
      *
      * @param dni <code>int</code> numero de DNI.
-     * @return <code>true</code> si encuentra el dni del pasajero. <code>false</code> de otra forma.
-     * @throws BadDataException Puede lanzar una excepcion de este tipo, si no se puede verificar el dni que llega por parametro
+     * @return <code>true</code> si encuentra el DNI del pasajero. <code>false</code> de otra forma.
+     * @throws BadDataException Puede lanzar una excepcion de este tipo, si no se puede verificar el DNI que llega por parametro
      */
 
     public boolean existePasajeroConEseDNI(int dni) throws BadDataException { // para hacer reservas o alguna otra cosa
@@ -244,7 +244,7 @@ public class Hotel {
      * @param dni <code>int</code> representa el numero de DNI de la persona a buscar
      * @return devuelve el objeto <code>Persona</code> correspondiente a ese DNI.
      * @throws PersonaNoExisteException si la persona buscada no existe lanza esta excepcion.
-     * @throws BadDataException Puede lanzar esta escepcion si el dni no puede ser verificado.
+     * @throws BadDataException Puede lanzar esta escepcion si el DNI no puede ser verificado.
      */
 
     public Persona buscarPersonaPorDni(int dni) throws PersonaNoExisteException, BadDataException {
@@ -266,7 +266,7 @@ public class Hotel {
     }
 
     /**
-     * Metodo que corrobora que exista un empleado con el dni pasado por parametro,
+     * Metodo que corrobora que exista un empleado con el DNI pasado por parametro,
      *
      * @param dni <code>int</code> que representa el numero de documento.
      * @return <code>true</code> si existe el empleado.
@@ -637,10 +637,10 @@ public class Hotel {
     // Todo lo relativo a las reservas.
 
     /**
-     * Busca reservas por dni.
+     * Busca reservas por DNI.
      *
-     * @param dni El dni del titular de la reserva
-     * @return true, si se encontro al menos una reserva con el dni asociado, false en otro caso.
+     * @param dni El DNI del titular de la reserva
+     * @return true, si se encontro al menos una reserva con el DNI asociado, false en otro caso.
      */
     private boolean buscarReservaPorTitular(int dni) {
         boolean respuesta = false;
@@ -654,10 +654,10 @@ public class Hotel {
     }
 
     /**
-     * Busca reservas activas por el dni del titular de la reservas.
+     * Busca reservas activas por el DNI del titular de la reservas.
      *
-     * @param dni El dni del titular de la reserva
-     * @return True si encuentra una reserva activa con el ese dni, false en cualquier otro caso.
+     * @param dni El DNI del titular de la reserva
+     * @return True si encuentra una reserva activa con el ese DNI, false en cualquier otro caso.
      */
 
     public boolean buscarReservaActivaPorTitular(int dni) {
@@ -671,9 +671,9 @@ public class Hotel {
     }
 
     /**
-     * Muestra un historico de reservas filtrado por el dni del titular
+     * Muestra un historico de reservas filtrado por el DNI del titular
      *
-     * @param dni El dni del titular de la reserva
+     * @param dni El DNI del titular de la reserva
      * @return Un String con la informacion de las reservas que tuvo el titular a lo largo del tiempo.
      */
     public String historicoPorTitular(int dni) {
@@ -742,7 +742,7 @@ public class Hotel {
 
 
         if (busqueda == null) {
-            throw new ReservaNoExisteException("La reserva no existe con ese id!");
+            throw new ReservaNoExisteException("La reserva no existe con ese ID!");
         }
 
         return busqueda;

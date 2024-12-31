@@ -86,7 +86,7 @@ public class Main {
                             menuGestionRecepcionista(hotel);
                         }
                     } catch (PersonaNoExisteException e) {
-                        System.out.println("Los datos ingresados son incorrectos o el empleado no existe");
+                        System.out.println("Los datos ingresados son incorrectos o el empleado no existe!");
                     }
                     break;
                 case 2:
@@ -96,7 +96,7 @@ public class Main {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Elija una opcion valida");
+                    System.out.println("Ingrese una opcion valida!");
             }
         } while (opcion != 0);
     }
@@ -114,7 +114,7 @@ public class Main {
         String clave;
 
         if (hotel.obtenerCantidadEmpleados() == 0) {
-            System.out.println("El hotel no tiene ningun empleado. Debe crearse un administrador para continuar");
+            System.out.println("El hotel no tiene ningun empleado. Debe crearse un administrador para continuar!");
             crearEmpleado(hotel,true);
         }
 
@@ -163,7 +163,7 @@ public class Main {
             if (nroTipoEmpleado < TipoEmpleado.values().length) {
                 hotel.crearEmpleado(nombre,apellido,dni,usuario,email,clave,TipoEmpleado.values()[nroTipoEmpleado]);
             } else {
-                System.out.println("El numero no es valido, intente nuevamente");
+                System.out.println("El numero no es valido, intente nuevamente!");
             }
         } else {
             hotel.crearEmpleado(nombre,apellido,dni,usuario,email,clave,TipoEmpleado.ADMINISTRADOR);
@@ -184,7 +184,7 @@ public class Main {
     private static void menuGestionAdmin(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException, BadOptionException, BadDataException {
         Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.ADMINISTRADOR) {
-            throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
+            throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu!");
         }
 
         int opcion;
@@ -221,7 +221,7 @@ public class Main {
                     try {
                         gestionarHabitacion(hotel);
                     } catch (HabitacionNoEncontradaException e) {
-                        System.out.println("La habitacion no pudo ser encontrada o no existe");
+                        System.out.println("La habitacion no pudo ser encontrada o no existe!");
                     }
                     break;
                 case 4:
@@ -240,7 +240,7 @@ public class Main {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Ingrese una opcion valida!");
             }
         } while (opcion != 0);
     }
@@ -256,7 +256,7 @@ public class Main {
     private static void menuGestionRecepcionista(Hotel hotel) throws UsuarioNoAutorizadoException, NullNameException {
         Scanner teclado = new Scanner(System.in);
         if (hotel.obtenerEmpleadoLogueado().getTipo() != TipoEmpleado.RECEPCIONISTA) {
-            throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu");
+            throw new UsuarioNoAutorizadoException("El usuario no tiene permisos para este menu!");
         }
 
         int opcion;
@@ -272,7 +272,7 @@ public class Main {
             System.out.println("7. Revisar jacuzzis de las habitaciones");
             System.out.println("8. Gestionar reservas");
             System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             try {
                 String numeroIngresado = teclado.nextLine();
@@ -288,7 +288,7 @@ public class Main {
                     try {
                         gestionarHabitacion(hotel);
                     } catch (HabitacionNoEncontradaException e) {
-                        System.out.println("La habitacion no pudo ser encontrada o no existe");
+                        System.out.println("La habitacion no pudo ser encontrada o no existe!");
                     }
                     break;
                 case 2:
@@ -316,7 +316,7 @@ public class Main {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Ingrese una opcion valida!");
             }
         } while (opcion != 0);
     }
@@ -342,9 +342,9 @@ public class Main {
         String apellido;
         String direccion;
 
-        nombre = definirNombreoApe("Nombre");
-        apellido = definirNombreoApe("Apellido");
-        System.out.println("Direccion");
+        nombre = definirNombreoApe("Nombre: ");
+        apellido = definirNombreoApe("Apellido: ");
+        System.out.println("Direccion: ");
         direccion = teclado.nextLine();
 
         hotel.agregarPasajero(nombre,apellido,dni,direccion);
@@ -369,16 +369,16 @@ public class Main {
             } catch (BadDataException e) {
                 System.out.println(e.getMessage());
             } catch (InputMismatchException e) {
-                System.out.println("algo paso");
+                System.out.println("Algo paso...");
             }
         }
         return dato;
     }
 
     /**
-     * Define el dni del usuario.
+     * Define el DNI del usuario.
      * @param hotel el objeto de la clase <code>Hotel</code> del usuario
-     * @return el dni del usuario
+     * @return el DNI del usuario
      */
 
     public static int definirDni(Hotel hotel) {
@@ -388,7 +388,7 @@ public class Main {
 
         while (!dniVerificado) {
             try {
-                System.out.println("Dni: ");
+                System.out.println("DNI: ");
                 dni = Integer.parseInt(teclado.nextLine());
                 hotel.verSiElDniEstaCargado(dni);
                 dniVerificado = true;
@@ -430,7 +430,7 @@ public class Main {
                 } catch (BadOptionException e) {
                     System.out.println(e.getMessage());
                 } catch (InputMismatchException e) {
-                    System.out.println("No es correcto!!");
+                    System.out.println("No es correcto!");
                 }
             }
             hotel.crearHabitaciones(cantHab, capMaxHab, tipoHab);
@@ -462,7 +462,7 @@ public class Main {
         if (estadoSeleccionado < EstadoHabitacion.values().length) {
             System.out.println(hotel.listarSegunEstado(tipoHab, EstadoHabitacion.values()[estadoSeleccionado - 1]));
         } else {
-            System.out.println("El numero no es valido, intente nuevamente");
+            System.out.println("El numero no es valido, intente nuevamente!");
         }
     }
 
@@ -484,7 +484,7 @@ public class Main {
             totalHabitaciones = hotel.obtenerNroHabitacionesSegunEstado(EstadoHabitacion.values()[estadoSeleccionado - 1]);
             System.out.println("Total de habitaciones: " + totalHabitaciones);
         } else {
-            System.out.println("El numero no es valido, intente nuevamente");
+            System.out.println("El numero no es valido, intente nuevamente!");
         }
 
     }
@@ -510,14 +510,14 @@ public class Main {
             hotel.hacerBackup();
         } catch (NumberFormatException e)
         {
-            System.out.println("Solo usar numeros!!!");
+            System.out.println("Solo usar numeros!");
         } catch (BadDataException e) {
             System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Muestra un menu para gestionar una persona segun el dni ingresado por teclado
+     * Muestra un menu para gestionar una persona segun el DNI ingresado por teclado
      *
      * @param hotel el objeto de tipo <code>Hotel</code>
      */
@@ -525,12 +525,12 @@ public class Main {
     private static void gestionarPersona(Hotel hotel) {
         Scanner teclado = new Scanner(System.in);
         try {
-            System.out.println("Ingrese el numero de dni de la persona a gestionar: ");
+            System.out.println("Ingrese el numero de DNI de la persona a gestionar: ");
             int dniPersona = Integer.parseInt(teclado.nextLine());
             GestionPersona.mostrarMenu(hotel.buscarPersonaPorDni(dniPersona),hotel);
             hotel.hacerBackup();
         } catch (PersonaNoExisteException e) {
-            System.out.println("El dni ingresado no se encuentra en los registros del hotel");
+            System.out.println("El DNI ingresado no se encuentra en los registros del hotel!");
         } catch (BadDataException e) {
             System.out.println(e.getMessage());
         }
@@ -548,11 +548,11 @@ public class Main {
         String username;
         boolean usuarioNoExiste = true;
 
-        System.out.println("Ingrese un nombre de usuario");
+        System.out.println("Ingrese un nombre de usuario: ");
         username = teclado.nextLine();
         if (hotel.existeUsuario(username)) {
             usuarioNoExiste = false;
-            throw new BadDataException("El usuario ingresado ya existe");
+            throw new BadDataException("El usuario ingresado ya existe!");
         }
 
         return username;
@@ -569,21 +569,21 @@ public class Main {
         boolean dniVerificado = false;
 
         try {
-            System.out.println("Ingrese el numero de dni del empleado a eliminar: ");
+            System.out.println("Ingrese el numero de DNI del empleado a eliminar: ");
             dniEmpleado = Integer.parseInt(teclado.nextLine());
             dniVerificado = hotel.existeEmpleadoConEseDNI(dniEmpleado);
 
             if (dniEmpleado != hotel.obtenerDniEmpleadoLogueado() && dniVerificado) {
                 hotel.eliminarEmpleadoPorElDni(dniEmpleado);
-                System.out.println("El empleado ha sido eliminado exitosamente");
+                System.out.println("El empleado ha sido eliminado exitosamente!");
             } else if (dniEmpleado == hotel.obtenerDniEmpleadoLogueado()) {
-                System.out.println("No se puede eliminar al empleado que está operando en este momento");
+                System.out.println("No se puede eliminar al empleado que está operando en este momento!");
             } else {
-                System.out.println("El dni ingresado no corresponde a un empleado o ya fue eliminado");
+                System.out.println("El DNI ingresado no corresponde a un empleado o ya fue eliminado!");
             }
 
         } catch (BadDataException e) {
-            System.out.println("No es un dni");
+            System.out.println("No es un DNI!");
         }
     }
 
@@ -615,14 +615,14 @@ public class Main {
         int opcion;
         do {
 
-            System.out.println("\n--- Gestión reservas ---");
-            System.out.println("Ingrese una opción: ");
+            System.out.println("\n--- Gestion reservas ---");
             System.out.println("1. Agregar una reserva");
             System.out.println("2. Eliminar una reserva");
-            System.out.println("3. Modificar una Reserva Existente");
+            System.out.println("3. Modificar una reserva existente");
             System.out.println("4. Ver reservas hechas por titular");
             System.out.println("5. Mostrar informacion de una reserva por su ID");
             System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
             try {
                 String numeroIngresado = teclado.nextLine();
                 esSoloNumeros(numeroIngresado);
@@ -641,7 +641,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Ingrese el Id de la reserva que quiere eliminar: ");
+                    System.out.println("Ingrese el ID de la reserva que quiere eliminar: ");
                     int reservaborrar;
                     try {
                         String numeroIngresado = teclado.nextLine();
@@ -655,7 +655,7 @@ public class Main {
                     break;
                 case 3:
                     int id_reserva;
-                    System.out.println("Ingrese el Id de la reserva que quiere modificar");
+                    System.out.println("Ingrese el ID de la reserva que quiere modificar");
                     try {
                         String numeroIngresado = teclado.nextLine();
                         esSoloNumeros(numeroIngresado);
@@ -668,25 +668,26 @@ public class Main {
                     do {
                         try {
                             Reserva reservaEncontrada = hotel.buscarReservaSegunId(id_reserva);
-                            System.out.println(reservaEncontrada + "\nSeleccione una opción");
-                            System.out.println("1. Cambiar el dni del titular");
+                            System.out.println(reservaEncontrada + "\nSeleccione una opcion");
+                            System.out.println("1. Cambiar el DNI del titular");
                             System.out.println("2. Agregar un pasajero a la reserva");
                             System.out.println("3. Cambiar el numero de habitacion");
                             System.out.println("4. Cambiar fecha de inicio");
-                            System.out.println("5. Cambiar fecha de finalización");
+                            System.out.println("5. Cambiar fecha de finalizacion");
                             System.out.println("0. Salir");
+                            System.out.print("Seleccione una opcion: ");
                             try {
                                 String numeroIngresado = teclado.nextLine();
                                 esSoloNumeros(numeroIngresado);
                                 eleccion = Integer.parseInt(numeroIngresado);
                             } catch (BadDataException e) {
-                                eleccion = -1; //para prevenir comportamientos inesperados
+                                eleccion = -1;
                                 System.out.println(e.getMessage());
                             }
 
                             switch (eleccion) {
                                 case 1:
-                                    System.out.println("ingrese el dni: ");
+                                    System.out.println("Ingrese el DNI: ");
                                     try {
                                         int nuevoDni = agregarPersonaAReservaCreando(hotel, "Titular");
                                         hotel.modificarTitularReserva(id_reserva, nuevoDni);
@@ -695,7 +696,7 @@ public class Main {
                                     }
                                     break;
                                 case 2:
-                                    System.out.println("Ingrese el dni del pasajero");
+                                    System.out.println("Ingrese el DNI del pasajero: ");
                                     try {
                                         int dniPasajero = agregarPersonaAReservaCreando(hotel, "Titular");
                                         hotel.agregarPasajeroAReserva(id_reserva, dniPasajero);
@@ -714,11 +715,11 @@ public class Main {
                                     }
                                     break;
                                 case 0:
-                                    System.out.println("Regresando al menú anterior...");
+                                    System.out.println("Regresando al menu anterior...");
                                     hotel.actualizarHabitacionesEnModificacionEnReserva();
                                     break;
                                 default:
-                                    System.out.println("Ingrese una opcion valida");
+                                    System.out.println("Ingrese una opcion valida!");
                             }
 
                         } catch (ReservaNoExisteException ex) {
@@ -741,7 +742,7 @@ public class Main {
                     break;
                 case 5:
                     id_reserva = -1;
-                    System.out.println("Ingrese el Id de la reserva que quiere visualizar: ");
+                    System.out.println("Ingrese el ID de la reserva que quiere visualizar: ");
                     try {
                         String numeroIngresado = teclado.nextLine();
                         esSoloNumeros(numeroIngresado);
@@ -793,9 +794,9 @@ public class Main {
         boolean seguirAgregandoPersonas = true;
         while (seguirAgregandoPersonas) {
             int eleccion = -1;
-            System.out.println("Hay alguien mas a quien agregar??");
+            System.out.println("Desea agregar mas personas? ");
             System.out.println("1. Si");
-            System.out.println("Cualquier otro numero para no.");
+            System.out.println("Cualquier otro numero para no");
 
             try {
                 eleccion = teclado.nextInt();
@@ -805,7 +806,7 @@ public class Main {
                     seguirAgregandoPersonas = false;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Por favor usar numeros!!");
+                System.out.println("Por favor usar numeros!");
             }
         }
 
@@ -825,7 +826,7 @@ public class Main {
      *
      * @param hotel objetod de tipo <code>Hotel</code>
      * @param tipo Mensaje que se va a mostrar en pantalla.
-     * @return un <code>int</code> que representa el dni de la persona.
+     * @return un <code>int</code> que representa el DNI de la persona.
      * @throws PersonaExisteException En el caso de que la persona que se quiere hacer la reserva sea un empleado,
      * se expulsara inmediato.
      */
@@ -835,7 +836,7 @@ public class Main {
         int dniPersona = 0;
         while (!personaexiste) {
             try {
-                System.out.println("Ingrese el DNI del " + tipo + " de la reserva");
+                System.out.println("Ingrese el DNI del " + tipo + " de la reserva: ");
                 dniPersona = Integer.parseInt(teclado.nextLine());
 
                 try {
@@ -864,7 +865,7 @@ public class Main {
         boolean fechavalida = false;
         while (!fechavalida) {
             try {
-                System.out.println("Ingrese fecha ( yyyy-mm-dd ) de " + tipo + " de la reserva");
+                System.out.println("Ingrese fecha ( yyyy-mm-dd ) de " + tipo + " de la reserva: ");
 
                 String fechainiciostring = teclado.nextLine();
                 fecha = LocalDate.parse(fechainiciostring);
@@ -874,7 +875,7 @@ public class Main {
                 }
                 fechavalida = true;
             } catch (DateTimeParseException e) {
-                System.out.println("La fecha esta incorrectamente escrita! (Usar guiones, no simbolo menos.)");
+                System.out.println("La fecha esta incorrectamente escrita! (Usar guiones, no simbolo menos)");
             } catch (BadDataException e) {
                 System.out.println(e.getMessage());
             }
@@ -902,11 +903,11 @@ public class Main {
         boolean correcto = false;
         int numeroHabitacion = 0;
         while (!correcto) {
-            System.out.println("Ingrese el Nro. de Habitación de la reserva");
+            System.out.println("Ingrese el numero de habitación de la reserva: ");
             for (Integer num : numerosDeHabitacion) {
                 System.out.println(hotel.traerDatosDeHabitacionSegunNum(num));
             }
-            System.out.println("Por favor, seleccionar una de las habitaciones listadas. ");
+            System.out.println("Por favor, seleccionar una de las habitaciones listadas!");
 
 
             try {
@@ -915,7 +916,7 @@ public class Main {
                 if (numerosDeHabitacion.contains(numeroHabitacion)) {
                     correcto = true;
                 } else {
-                    System.out.println("Debe ser uno de los numeros incluidos");
+                    System.out.println("Debe ser uno de los numeros incluidos!");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Por favor usar numeros!");
